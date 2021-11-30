@@ -1,0 +1,22 @@
+package com.comcast.orion.shipmentdata.service;
+
+import java.util.List;
+
+import com.comcast.orion.shipmentdata.domain.OmwShippingOrderVo;
+import com.comcast.orion.shipmentdata.getTDSRetrieveDeviceDetails.request.TDSGetRetrieveDeviceDetailsRequest;
+import com.comcast.orion.shipmentdata.getTDSRetrieveDeviceDetails.response.TDSGetRetrieveDeviceDetailsResponse;
+import com.comcast.orion.shipmentdata.postPersistShipmentOrder.request.TDSPostPersistShipmentOrderRequest;
+import com.comcast.orion.shipmentdata.utils.exceptions.OrionMiddlewareServiceException;
+
+public interface ShipmentdataService {
+	
+	TDSGetRetrieveDeviceDetailsResponse getTDSRetrieveDeviceDetails(TDSGetRetrieveDeviceDetailsRequest getRetrieveDeviceDetails) throws OrionMiddlewareServiceException;
+	
+	void persistShipmentOrderDetails(TDSPostPersistShipmentOrderRequest getRetrieveDeviceDetails,String createdBy,String externalTransactionId ) throws OrionMiddlewareServiceException;
+	
+	List<OmwShippingOrderVo> retrieveShipmentOrders(List<String> status) throws OrionMiddlewareServiceException;
+	
+	TDSPostPersistShipmentOrderRequest getOrderDetails(String orderId) throws OrionMiddlewareServiceException;
+	
+	 TDSPostPersistShipmentOrderRequest updateOrderStatus(TDSPostPersistShipmentOrderRequest persistShipmentOrderDetailsRequest,String externalTransactionId) throws OrionMiddlewareServiceException;
+}
